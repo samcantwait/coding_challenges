@@ -15,3 +15,19 @@ function pickingNumbers(a) {
     }
     return max;
 }
+
+// Here is an O(n) solution
+function pickingNumbers2(a) {
+    const map = new Array(100).fill(0);
+    for (let i = 0; i < a.length; i++) {
+        map[a[i]]++;
+    }
+
+    let max = 0;
+    for (let j = 1; j < map.length; j++) {
+        max = Math.max(max, map[j] + map[j - 1])
+    }
+    return max;
+}
+
+console.log(pickingNumbers2([1, 1, 2, 2, 4, 4, 5, 5, 5]))
